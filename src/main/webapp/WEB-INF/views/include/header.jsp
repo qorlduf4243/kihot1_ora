@@ -20,8 +20,8 @@
    <script src="/resources/home/js/placeholders.min.js"></script>
 <![endif]-->
 <script>
-if('${msg}'!= ""){
-   alert("${msg}에 성공하였습니다.!");   
+if('${msg}' != ""){
+   alert("${msg} 에 성공하였습니다.!");
 }
 </script>
 </head>
@@ -41,14 +41,14 @@ if('${msg}'!= ""){
             <ul class="util clear">
             <c:choose>
                <c:when test="${session_enabled eq 'true' }">
-               <li><span style="color:white">${session_username}님[${session_userid}] 환영합니다!</span>
-               </li>
-               <li><a href="/logout">로그아웃</a>
-               <c:if test="${session_levels eq 'ROLE_ADMIN'}">
-                  <li><a href="/admin">관리자</a>
+                  <li><span style="color:white">${session_username}님[${session_userid}] 환영합니다.!</span>
                   </li>
-               </c:if>
-               </li>
+                  <li><a href="/logout">로그아웃</a>
+                  </li>
+                  <c:if test="${session_levels eq 'ROLE_ADMIN'}">
+                     <li><a href="/admin">관리자</a>
+                     </li>
+                  </c:if>
                </c:when>
                <c:otherwise>
                   <li><a href="/login">로그인</a>
@@ -60,7 +60,7 @@ if('${msg}'!= ""){
             </ul>   
             <nav>
             <ul class="gnb clear">
-               <li><a href="/sample/" class="openAll1">포트폴리오</a>
+               <li><a href="/sample" class="openAll1">포트폴리오</a>
 
                         <div class="gnb_depth gnb_depth2_1">
                             <ul class="submenu_list">
@@ -69,13 +69,18 @@ if('${msg}'!= ""){
                             </ul>
                         </div>
                </li>
-               <li><a href="/board/list" class="openAll2">고객센터</a>
+               <li><a href="/board/list?searchBoard=notice" class="openAll2">고객센터</a>
                     <div class="gnb_depth gnb_depth2_2">
                             <ul class="submenu_list">
-                                <li><a href="/board/list">공지사항</a></li>
+                            <c:forEach items="${boardTypeMenu}" var="boardTypeMenu">
+                            <li><a href="/board/list?searchBoard=${boardTypeMenu.bod_type}">${boardTypeMenu.bod_name}</a></li>
+                            </c:forEach>
+                               <!--  <li><a href="/board/list?searchBoard=notice">공지사항</a></li>
+                                <li><a href="/board/list?searchBoard=gallery">갤러리</a></li> -->
                             </ul>
                         </div>
                </li>
+               
             </ul>
                 </nav>
             <p class="closePop"><a href="#">닫기</a></p>
@@ -83,3 +88,5 @@ if('${msg}'!= ""){
          <!-- //header_cont -->
       </div>
    </header>
+   
+   

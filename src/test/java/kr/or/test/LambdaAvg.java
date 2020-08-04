@@ -39,7 +39,7 @@ public class LambdaAvg {
 	public static double avg(ToIntFunction<Student> function) {
 		int sum = 0;
 		for(Student student:students) {
-			System.out.println("더하는 점수:" + function.applyAsInt(student));
+			//System.out.println("더하는 점수:" + function.applyAsInt(student));
 			sum = sum + function.applyAsInt(student);
 		}
 		double avg = (double) sum / students.length;

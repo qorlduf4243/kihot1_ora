@@ -34,6 +34,22 @@
 							<form role="form" action="/admin/board/update" method="post" encType="multipart/form-data">
 								<div class="row">
 									<div class="col-sm-12">
+										<!-- select option -->
+										<div class="form-group">
+											<label>게시판선택</label> 
+											<select name="bod_type" class="form-control" required>
+						                      <option value="">게시판선택</option>
+						                      <c:forEach items="${boardTypeMenu}" var="boardTypeMenu">
+						                      <option value="${boardTypeMenu.bod_type}" <c:out value="${(boardVO.vod_type eq boardTypeMenu.bod_type)?('selected'):('')}" />>${boardTypeMenu.bod_name}</option>
+						                      </c:forEach>
+						                     <%--  
+						                     <option value="notice" <c:out value="${(boardVO.bod_type eq 'notice')?('selected'):('')}" />>공지사항</option>
+						                     <option value="gallery" <c:out value="${(boardVO.bod_type eq 'gallery')?('selected'):('')}" />>겔러리</option>
+						                     --%>
+						                    </select>
+										</div>
+									</div>
+									<div class="col-sm-12">
 										<!-- text input -->
 										<div class="form-group">
 											<label>Title</label> 

@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="../include/header.jsp" %>
 
- <!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<div class="content-header">
@@ -38,15 +38,17 @@
 										<!-- text input -->
 										<div class="form-group">
 											<label>user_id</label>
-											 <br>${memberVO.user_id}
-											 <input value="${memberVO.user_id}" name="user_id" type="hidden" class="form-control"
+											<br>${memberVO.user_id} 
+											<input value="${memberVO.user_id}" name="user_id" type="hidden" class="form-control"
 												placeholder="Enter user_id">
 										</div>
 									</div>
+
 									<div class="col-sm-12">
 										<!-- text input -->
 										<div class="form-group">
-											<label>user_pw</label> <input value="" name="user_pw" type="text" class="form-control"
+											<label>user_pw</label> 
+											<input value="" name="user_pw" type="text" class="form-control"
 												placeholder="${memberVO.user_pw}">
 										</div>
 									</div>
@@ -54,7 +56,8 @@
 									<div class="col-sm-12">
 										<!-- text input -->
 										<div class="form-group">
-											<label>user_name</label> <input value="${memberVO.user_name}" name="user_name" type="text" class="form-control"
+											<label>user_name</label> 
+											<input value="${memberVO.user_name}" name="user_name" type="text" class="form-control"
 												placeholder="Enter user_name">
 										</div>
 									</div>
@@ -62,23 +65,27 @@
 									<div class="col-sm-12">
 										<!-- text input -->
 										<div class="form-group">
-											<label>email</label> <input value="${memberVO.email}" name="email" type="text" class="form-control"
+											<label>email</label> 
+											<input value="${memberVO.email}" name="email" type="text" class="form-control"
 												placeholder="Enter email">
 										</div>
 									</div>
 										<div class="col-sm-12">
 										<div class="form-group">
-											<label>point</label> <input value="${memberVO.point}" name="point" type="text" class="form-control"
+											<label>point</label> 
+											<input value="${memberVO.point}" name="point" type="text" class="form-control"
 												placeholder="0">
 										</div>
 									</div>
 									<div class="form-group">
                         <label>enabled</label>
                         <select name="enabled" class="form-control">
-                          <option value="0" <c:out value="${memberVO.enabled eq 'false'?'selected':''}" />>
-                          false
-                          </option>
-                          <option value="1" <c:out value="${memberVO.enabled eq 'true'?'selected':''}" />>
+<option value="0" <c:out value="${(memberVO.enabled eq 'false')?('selected'):('')}" />
+>
+false
+</option>
+<option value="1" <c:out value="${(memberVO.enabled eq 'true')?('selected'):('') }" />
+>
                           true
                           </option>
                         </select>
@@ -98,7 +105,7 @@
 								</div>
 								</div>
 								</div>
-								<input type="hidden" name="page" value="${pageVO.page}">
+								<input type="hidden" name="page" value="${pageVO.page}" >
 							</form>
 						</div>
 						<!-- /.content-header -->
@@ -107,9 +114,10 @@
 						<div class="content"></div>
 						<!-- .content  -->
 					</div>
+					
 				</div>
 			</div>
 		</div>
-		<!-- contents wrap -->
+		<!-- ./Content Wrapper -->
 
 <%@ include file="../include/footer.jsp" %> 

@@ -3,8 +3,6 @@
 
 <%@ include file="include/header.jsp" %>
 
-  
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -23,13 +21,15 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-          <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+    
     </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
-  <%@ include file="include/footer.jsp" %>
+
+<%@ include file="include/footer.jsp" %> 

@@ -15,8 +15,8 @@ import org.springframework.stereotype.Repository;
 public class ReplyDAOImpl implements IF_ReplyDAO {
 	private static String mapperQuery = "org.edu.dao.IF_ReplyDAO";
 	@Inject
-	private SqlSession sqlSession;// 마이바티스 사용 변수 추가
-
+	private SqlSession sqlSession;//마이바티스 사용 변수 추가
+	
 	@Override
 	public List<ReplyVO> selectReply(Integer bno, PageVO pageVO) throws Exception {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
@@ -28,19 +28,16 @@ public class ReplyDAOImpl implements IF_ReplyDAO {
 	@Override
 	public void insertReply(ReplyVO replyVO) throws Exception {
 		sqlSession.insert(mapperQuery + ".insertReply", replyVO);
-
 	}
 
 	@Override
 	public void updateReply(ReplyVO replyVO) throws Exception {
 		sqlSession.update(mapperQuery + ".updateReply", replyVO);
-
 	}
 
 	@Override
 	public void deleteReply(Integer rno) throws Exception {
 		sqlSession.delete(mapperQuery + ".deleteReply", rno);
-
 	}
 
 	@Override

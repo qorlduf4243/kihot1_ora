@@ -14,7 +14,7 @@ public class ReplyServiceImpl implements IF_ReplyService {
 
 	@Inject
 	private IF_ReplyDAO replyDAO;
-
+	
 	@Override
 	public List<ReplyVO> selectReply(Integer bno, PageVO pageVO) throws Exception {
 		return replyDAO.selectReply(bno, pageVO);
@@ -23,19 +23,16 @@ public class ReplyServiceImpl implements IF_ReplyService {
 	@Override
 	public void insertReply(ReplyVO replyVO) throws Exception {
 		replyDAO.insertReply(replyVO);
-
 	}
 
 	@Override
 	public void updateReply(ReplyVO replyVO) throws Exception {
 		replyDAO.updateReply(replyVO);
-
 	}
 
 	@Override
 	public void deleteReply(Integer rno) throws Exception {
 		replyDAO.deleteReply(rno);
-
 	}
 
 	@Override

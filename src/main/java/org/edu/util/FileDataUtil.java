@@ -20,20 +20,19 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class FileDataUtil {
-
+	
 	private ArrayList<String> extNameArray = new ArrayList<String>() 
 	{
 		{
-		add("gif");
-		add("jpg");
-		add("png");
+			add("gif");
+			add("jpg");
+			add("png");
 		}
 	};
-
-	// 첨부파일 업로드 경로 변수값으로 가져옴 servlet-context.xml
-	@Resource(name = "uploadPath")
+	//첨부파일 업로드 경로 변수값으로 가져옴 servlet-context.xml
+	@Resource(name="uploadPath")
 	private String uploadPath;
-
+	
 	public String getUploadPath() {
 		return uploadPath;
 	}
@@ -45,7 +44,7 @@ public class FileDataUtil {
 	/**
 	 * 게시물 상세보기에서 첨부파일 다운로드 메서드 구현(공통)
 	 */
-	@RequestMapping(value = "/download", method = RequestMethod.GET)
+	@RequestMapping(value="/download", method=RequestMethod.GET)
 	@ResponseBody
 	public FileSystemResource fileDownload(@RequestParam("filename") String fileName, HttpServletResponse response) {
 		File file = new File(uploadPath + "/" + fileName);
@@ -53,17 +52,16 @@ public class FileDataUtil {
 		response.setHeader("Content-Disposition", "attachment; filename=" + fileName);
 		return new FileSystemResource(file);
 	}
-
+	
 	/**
 	 * 파일 업로드 메서드(공통)
-	 * 
-	 * @throws IOException
+	 * @throws IOException 
 	 */
 	public String[] fileUpload(MultipartFile file) throws IOException {
-		String originalName = file.getOriginalFilename();// jsp에서 전송받은 파일의 이름 가져옴
-		UUID uid = UUID.randomUUID();// 랜덤문자 구하기
-		String saveName = uid.toString() + "." + originalName.split("\\.")[1];// 한글 파일명 처리 때문에...
-		String[] files = new String[] { saveName };// 형변환
+		String originalName = file.getOriginalFilename();//jsp에서 전송받은 파일의 이름 가져옴
+		UUID uid = UUID.randomUUID();//랜덤문자 구하기
+		String saveName = uid.toString() + "." + originalName.split("\\.")[1];//한글 파일명 처리 때문에...
+		String[] files = new String[] {saveName};//형변환
 		byte[] fileData = file.getBytes();
 		File target = new File(uploadPath, saveName);
 		FileCopyUtils.copy(fileData, target);

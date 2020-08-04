@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="../include/header.jsp" %>
 
- <!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<div class="content-header">
@@ -37,7 +37,8 @@
 									<div class="col-sm-12">
 										<!-- text input -->
 										<div class="form-group">
-											<label>user_id</label> <input name="user_id" type="text" class="form-control"
+											<label>user_id</label> 
+											<input name="user_id" type="text" class="form-control"
 												placeholder="Enter user_id">
 										</div>
 									</div>
@@ -45,7 +46,8 @@
 									<div class="col-sm-12">
 										<!-- text input -->
 										<div class="form-group">
-											<label>user_pw</label> <input name="user_pw" type="text" class="form-control"
+											<label>user_pw</label> 
+											<input name="user_pw" type="text" class="form-control"
 												placeholder="Enter user_pw">
 										</div>
 									</div>
@@ -53,7 +55,8 @@
 									<div class="col-sm-12">
 										<!-- text input -->
 										<div class="form-group">
-											<label>user_name</label> <input name="user_name" type="text" class="form-control"
+											<label>user_name</label> 
+											<input name="user_name" type="text" class="form-control"
 												placeholder="Enter user_name">
 										</div>
 									</div>
@@ -61,14 +64,16 @@
 									<div class="col-sm-12">
 										<!-- text input -->
 										<div class="form-group">
-											<label>email</label> <input name="email" type="text" class="form-control"
+											<label>email</label> 
+											<input name="email" type="text" class="form-control"
 												placeholder="Enter email">
 										</div>
 									</div>
 										<div class="col-sm-12">
 										<div class="form-group">
-											<label>point</label> <input name="point" type="text" class="form-control"
-												placeholder="0">
+											<label>point</label> 
+											<input name="point" type="text" class="form-control"
+												value="0">
 										</div>
 									</div>
 									<div class="form-group">
@@ -85,7 +90,7 @@
                      <br>
                      <div class = "buttons">
 									<button type="submit" class="btn btn-warning">Submit</button>
-									<a herf="/admin/member/list?page=${pageVO.page}" class="btn btn-primary">LIST ALL</a>
+									<a href="/admin/member/list?page=${pageVO.page}" class="btn btn-primary">LIST ALL</a>
 								</div>
 								</div>
 								</div>
@@ -97,9 +102,10 @@
 						<div class="content"></div>
 						<!-- .content  -->
 					</div>
+					
 				</div>
 			</div>
 		</div>
-		<!-- contents wrap -->
+		<!-- ./Content Wrapper -->
 
 <%@ include file="../include/footer.jsp" %> 
