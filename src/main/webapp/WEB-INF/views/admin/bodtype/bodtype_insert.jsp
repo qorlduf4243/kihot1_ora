@@ -48,9 +48,10 @@
 										<!-- text input -->
 										<div class="form-group">
 											<label>보드타입</label> 
-											<input value="${bodTypeVO.bod_type}" name="bod_type" type="text" class="form-control"
+											<input id="bod_type" value="${bodTypeVO.bod_type}" name="bod_type" type="text" class="form-control"
 												placeholder="게시판 타입을 입력해 주세요" required>
 										</div>
+										<span id="msg_validation"></span>
 									</div>
 									<div class="col-sm-12">
 										<!-- text input -->
@@ -73,7 +74,7 @@
 									<div class="col-sm-12">
 									
 										<div class="buttons">
-											<button type="submit" class="btn btn-warning">Submit</button>
+											<button id="submit_check" disabled type="submit" class="btn btn-warning">Submit</button>
 											<a href="/admin/bodtype/list" class="btn btn-primary">LIST ALL</a>
 										</div>
 									</div>
@@ -88,4 +89,32 @@
     
     </div>
     <!-- ./Content Wrapper. Contains page content -->
+    <script>
+    $(document).ready(function(){
+    	//.focus() <-> .blur()
+    	$("#bod_type").blur(function(){
+    		var bod_type = $("#bod_type").val();
+    		//Ajax => Asyn 비동기 Javascript And Xml(Json제이슨-key:value)
+    		$.ajax({
+    			type:'get',
+    			url:'/admin/bodtype/bodtype_check?bod_type=' + bod_type,
+    			success:function(result){
+    				//alert(result);//디버그용
+    				if(result=='1'){
+    					//alert('해당 게시판이 이미 존재합니다.');
+    					$("#msg_validation").text("기존 게시판이 존재합니다.");
+    					$("#msg_validation").css({"color":"red","font-size":"14px"});
+    					$("#submit_check").attr("disabled",true);
+    				}else{
+    					$("#msg_validation").text("사용 가능한 게시판 입니다.")
+    					$("#submit_check").attr("disabled",false);
+    				}
+    			},
+    			error:function(){
+    				alert("RestAPI서버에서 에러가 발생되었습니다.");
+    			}
+    		});
+    	});
+    });
+    </script>
 <%@ include file="../include/footer.jsp" %> 

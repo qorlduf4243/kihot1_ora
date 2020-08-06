@@ -1,6 +1,9 @@
 package org.edu.util;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -9,6 +12,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -51,6 +55,34 @@ public class FileDataUtil {
 		response.setContentType("application/download; utf-8");
 		response.setHeader("Content-Disposition", "attachment; filename=" + fileName);
 		return new FileSystemResource(file);
+	}
+	
+	/*
+	 * 게시물 이미지일때 미리보기 메서드 구현(IE, 크롬에서 공통)
+	 */
+	@RequestMapping(value="/image_preview", method=RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+	@ResponseBody
+	public byte[] imagePreview(@RequestParam("filename") String fileName, HttpServletResponse response) throws IOException {
+		FileInputStream fis = null;//변수초기화
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();//인스턴스 변수생성
+		fis = new FileInputStream(uploadPath + "/" + fileName);
+		int readCount = 0;
+		byte[] buffer = new byte[1024];
+		byte[] fileArray = null;
+		while((readCount = fis.read(buffer)) != -1) {
+			baos.write(buffer,0,readCount);
+			/*
+			buffer    = 버퍼데이터(파일내용) byte[]
+			off(0)    = 버퍼데이터의 0부터 시작 오프셋
+             - 옵셋(offset) : bottom offset 화면하단기준에서 더해진 값.
+                             top offset 화면상단에서 얼마큼 거리
+			readCount = 쓸 바이트 수(int) = 버퍼데이터크기만큼
+			*/
+		}
+		fileArray = baos.toByteArray();//자료 변환 후 변수에 저장
+		fis.close();
+		baos.close();
+		return fileArray;
 	}
 	
 	/**

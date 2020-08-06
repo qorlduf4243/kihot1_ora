@@ -41,9 +41,8 @@
               <div class="card-body table-responsive p-0">
                 
                 
-                <form role="form" action="/admin/bodtype/update" method="post">
-								<div class="row">
-									
+                <form id="form_bodtype" role="form" action="/admin/bodtype/update" method="post">
+								<div class="row">					
 									<div class="col-sm-12">
 										<!-- text input -->
 										<div class="form-group">
@@ -75,6 +74,7 @@
 									
 										<div class="buttons">
 											<button type="submit" class="btn btn-warning">Submit</button>
+											<a href="#" id="btn_delete" class="btn btn-info">DELETE</a>
 											<a href="/admin/bodtype/list" class="btn btn-primary">LIST ALL</a>
 										</div>
 									</div>
@@ -85,8 +85,18 @@
             </div>
             <!-- /.card -->
           </div>
- 
-    
+
     </div>
     <!-- ./Content Wrapper. Contains page content -->
+    <script>
+    //제이쿼리 시작 function abc(){}    이것이 원래함수
+    $(document).ready(function(){//이름이 없는함수 콜백함수
+       $("#btn_delete").click(function(){
+    	  if(confirm("정말로 삭제하시겠습니까?")){
+    		  $("#form_bodtype").attr("action","/admin/bodtype/delete");
+              $("#form_bodtype").submit();
+    	  }
+       });
+    });
+    </script>
 <%@ include file="../include/footer.jsp" %> 

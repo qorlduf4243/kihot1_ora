@@ -48,6 +48,36 @@ public class AdminController {
    @Inject
    private FileDataUtil fileDataUtil;
    
+   
+   /**
+    * 회원 아이디 체크 RestAPI 입니다. 주) @ResponseBody 사용됨
+    * @throws Exception 
+    */
+   @RequestMapping(value = "/member/idcheck", method = RequestMethod.GET)
+   @ResponseBody
+   public int idCheck(@RequestParam("user_id") String user_id) throws Exception {
+      MemberVO memberVO = memberService.viewMember(user_id);
+      int check = 0; //쿼리 결과값이 존재하는지 체크하는 변수
+      if(memberVO!=null) {
+         check = 1;
+      }
+      return check;
+   }
+   /**
+    * 게시판 아이디 체크 RestAPI 입니다. 주) @ResponseBody 사용됨
+    * @throws Exception 
+    */
+   @RequestMapping(value = "/bodtype/bodtype_check", method = RequestMethod.GET)
+   @ResponseBody
+   public int bodTypeCheck(@RequestParam("bod_type") String bod_type) throws Exception {
+      BoardTypeVO boardTypeVO = boardService.viewBoardType(bod_type);
+      //System.out.println("=====디버그=====" + boardTypeVO);
+      int check = 0; //쿼리 결과값이 존재하는지 체크하는 변수
+      if(boardTypeVO!=null) {
+         check = 1;
+      }
+      return check;
+   }
    /**
     * 게시판생성 insert 입니다.
     * @throws Exception 
